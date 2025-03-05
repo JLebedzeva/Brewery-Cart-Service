@@ -2,7 +2,6 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from "dotenv-safe";
 import cartRoutes from './ports/rest/routes/cart';
-import { ConnectToDb } from './infrastructure/mongodb/connection';
 
 const app = express();
 app.use(cors());
@@ -16,7 +15,6 @@ dotenv.config({
 });
 
 const port = process.env.PORT || 3001;
-ConnectToDb();
 app.use("/healthcheck", (req, res) => {
   res.status(200).send("The Cart Service is ALIVE!");
 });
